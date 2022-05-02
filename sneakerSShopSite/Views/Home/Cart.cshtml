@@ -1,0 +1,117 @@
+﻿@using sneakerSShopSite.Models.ViewModels
+@model CartVM
+@{
+    ViewData["Title"] = "Cart";
+}
+<h1 class="text-center">@ViewData["Title"]</h1>
+<div class="modal fade" id="modalReq" tabindex="-1" aria-labelledby="modalReqModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalReqModalLabel">Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form asp-action="AddRequest" asp-controller="Home" method="post"> 
+                    <div class="form-group">
+                        <table class="table align-middle">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Photo</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Size</th>
+                              <th scope="col">Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                                @if (ViewBag.cartGoods != null)
+                                {
+                                    @for (int i = 0; i < ViewBag.cartGoods.Count; i++)
+                                    {
+                                        <input type="number" value="@ViewBag.cartGoods[i].IdGood" asp-for="idsGoods[i]" hidden/>
+                                        <tr>
+                                            <th scope="row">@(i+1)</th>
+                                            <td>
+                                                <img width="100" height="127" src="@Url.Action("GetImage","Pages"
+                                          ,new {Id=@ViewBag.cartGoods[i].IdGoodNavigation.IdNom})"/>
+                                            </td>
+                                            <td>@ViewBag.cartGoods[i].IdGoodNavigation.IdNomNavigation.IdBrandNavigation.BrandName 
+                                                @ViewBag.cartGoods[i].IdGoodNavigation.IdNomNavigation.Model</td>
+                                            <td>@ViewBag.cartGoods[i].IdGoodNavigation.Size</td>
+                                            <td>
+                                                <select asp-for="counts[i]" class="form-select">
+                                                    @for (int c = 1; c <= ViewBag.cartGoods[i].IdGoodNavigation.Amount; c++)
+                                                    {
+                                                        <option value="@c">@c</option>
+                                                    }
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <label asp-for="adress" class="control-label">Adress</label>
+                        <input asp-for="adress" type="text" class="form-control" required/>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" value="Courier" 
+                      asp-for="delivery" type="radio">
+                      <label class="form-check-label" asp-for="delivery">
+                        Courier
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" 
+                      value="Post" asp-for="delivery" checked>
+                      <label class="form-check-label" asp-for="delivery">
+                        Post
+                      </label>
+                    </div>
+                    <button class="btn" type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@if(ViewBag.cartGoods!=null)
+{
+<table class="table align-middle">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Photo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Size</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+        @for (int i= 0; i < ViewBag.cartGoods.Count;i++)
+        {
+           <tr>
+              <th scope="row">@(i+1)</th>
+              <td>
+                  <img width="100" height="127" src="@Url.Action("GetImage","Pages"
+                  ,new {Id=@ViewBag.cartGoods[i].IdGoodNavigation.IdNom})"/>
+              </td>
+              <td>@ViewBag.cartGoods[i].IdGoodNavigation.IdNomNavigation.IdBrandNavigation.BrandName 
+                  @ViewBag.cartGoods[i].IdGoodNavigation.IdNomNavigation.Model</td>
+              <td>@ViewBag.cartGoods[i].IdGoodNavigation.Size</td>
+              <td>
+                  <a href="DeleteFromCart?id=@ViewBag.cartGoods[i].Id">
+                      <i class="fa-solid fa-xmark"></i>
+                  </a>
+              </td>
+         </tr> 
+        }
+  </tbody>
+</table>
+<button class="btn" id="makeReq">Make request</button>
+}
+else{
+    <h3 class="text-center">You haven't added any goods yet</h3>
+}

@@ -1,0 +1,52 @@
+﻿@model Nomenclature
+@using Microsoft.AspNetCore.Identity
+@using Models.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Good";
+}
+<link rel="stylesheet" href="~/css~/css/Good.css"/>
+<h2 class="text-center">@ViewData["Title"]</h2>
+@if (Model != null) 
+{
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<img class="img-fluid" 
+				src="@Url.Action("GetImage","Pages",new{Id=@Model.Id})">
+			</div>
+			<div class="col-lg-5 offset-lg-1">
+				<div class="s_product_text">
+					<h3>@Model.IdBrandNavigation.BrandName @Model.Model</h3>
+					<h2>$@Model.Price</h2>
+					<p>@Model.Description</p>
+				</div>
+				@if (SignInManager.IsSignedIn(User))
+				{
+                    <form asp-action="AddToCart" asp-controller="Pages" method="post">
+                        <label for="goodId" class="control-label">Size</label>
+                        <select class="form-select" name="goodId" id="sizeSelect">
+                            @foreach(var good in Model.Goods)
+                            {
+                                <option value="@good.Id">@good.Size</option>    
+                            }
+                        </select>
+					    <button id="addtocart" class="btn" >Add to cart</button>
+                    </form>
+				}
+				else
+				{
+                    <label for="goodId" class="control-label">Size</label>
+                        <select class="form-select" name="goodId" id="sizeSelect">
+                            @foreach(var good in Model.Goods)
+                            {
+                                <option value="@good.Id">@good.Size</option>    
+                            }
+                        </select>
+					<a class="text-dark navColor btn" asp-area="Identity" asp-page="/Account/Login">Add To Cart</a>
+				}
+			</div>
+		</div>
+	</div>
+}

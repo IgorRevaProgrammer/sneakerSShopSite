@@ -1,0 +1,9 @@
+﻿@model bool
+<div class="dropdown-menu" class="column">
+    @Html.ActionLink("All", "SelectedCategory", "Home", new {sex=Model,category="all"}, new { @class = "nav-link text-dark" })
+    @Html.ActionLink("Sneakers", "SelectedCategory", "Home", new {sex=Model,category="sneakers"}, new { @class = "nav-link text-dark" })
+    @Html.ActionLink("Boots", "SelectedCategory", "Home", new {sex=Model,category="boots"}, new { @class = "nav-link text-dark" })
+    @Html.ActionLink("Sandals", "SelectedCategory", "Home", new {sex=Model,category="sandals"}, new { @class = "nav-link text-dark" })
+    @Html.ActionLink("Shoes", "SelectedCategory", "Home", new {sex=Model,category="shoes"}, new { @class = "nav-link text-dark" })
+    @Html.ActionLink("Flip flops", "SelectedCategory", "Home", new {sex=Model,category="flip flops"}, new { @class = "nav-link text-dark" })
+</div>

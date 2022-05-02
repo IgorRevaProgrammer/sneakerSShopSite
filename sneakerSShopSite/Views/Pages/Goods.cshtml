@@ -1,0 +1,35 @@
+﻿@using Models.Models
+@using sneakerSShopSite.Models.ViewModels
+@model List<Nomenclature>
+@{
+    ViewData["Title"] = "Goods";
+}
+<link rel="stylesheet" href="~/css/PageGoodsStyle.css"/>
+<h2 class="text-center">@ViewData["Title"]</h2>
+@if(Model.Any())
+{
+    @await Html.PartialAsync("Filters", (FiltersVM)@ViewBag.FiltersVM)
+    <ul class="products clearfix">
+        @foreach(var good in Model)
+        {
+          <li class="product-wrapper">
+		     <a href="Good?id=@good.Id" class="product">
+                 <div class="product-photo">
+	                <img class="image" src="@Url.Action("GetImage",
+                    "Pages",new {good.Id})"/>
+                </div>
+                <div class="product-name">@good.IdBrandNavigation.BrandName @good.Model</div>
+                <p class="priceAndLike">
+                    <div class="product-price">Price: $@good.Price</div>
+                    <button class="likeBtn">
+                             <i class="fa-regular fa-heart"></i>
+                    </button>
+                </p>
+             </a>
+	      </li>   
+        }
+    </ul>
+}
+else{
+    <h3 class="text-center">Unfortunately we didn't find anything</h3>
+}

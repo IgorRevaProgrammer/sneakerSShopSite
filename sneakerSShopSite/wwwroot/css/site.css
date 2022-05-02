@@ -1,0 +1,217 @@
+.logo {
+    width:215px;
+    height:33px;
+}
+/*-----------*/
+.dropdownlink>a{
+    
+    color:black !important;
+    font-weight:600;
+    font-size:18px;
+}
+.navbar .nav-item .dropdown-menu {
+    background-color: #fff047;
+    border: 0;
+}
+@media all and (min-width: 576px) {
+    .dropdownlink > a {
+        font-weight: 500;
+        font-size: 14px;
+    }
+}
+@media all and (min-width: 768px) {
+    .dropdownlink > a {
+        font-size: 16px;
+    }
+}
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+    }
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+    .navbar .nav-item .dropdown-menu {
+    }
+    .navbar .dropdownlink:hover .nav-link {
+        font-size: 20px;
+    }
+    .dropdownlink > a {
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+/*-------------------------------------*/
+.formSearch {
+    position: relative;
+    margin: 0 auto;
+    transition: all 0.5s;
+}
+.buttonSearch {
+    background: #683B4D;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.buttonSearch:before {
+    font-size: 16px;
+    color: #F9F0DA;
+}
+.inputSearch {
+    border: 0;
+    border-bottom: 2px solid transparent;
+    outline: 0;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    border-bottom: 2px solid black;
+}
+.modalInputSearch {
+    width: 85%;
+    height:35px;
+    border-radius: 5px;
+    border-color: #fff047;
+    padding-bottom:6px;
+}
+@media all and (max-width: 574px) {
+    .rightPanel {
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+    }
+    .formSearch {
+        width: 40px;
+        height: 40px;
+    }
+    .inputSearch{
+        width:0;
+        padding:0;
+        height:0;
+    }
+    .rightTabs {
+        height: 40px;
+    }
+    .buttonSearch {
+       width:40px;
+       height:40px;
+       padding-bottom:5px;
+    }
+}
+@media (min-width: 576px) {
+    .inputSearch {
+        padding: 0 35px 0 15px;
+        top:-3px;
+        height:42px;
+        width:100%;
+    }
+    .formSearch {
+        width: 42px;
+        height: 42px;
+    }
+    .buttonSearch {
+        height: 35px;
+        width: 35px;     
+    }
+    .formSearch:hover{
+        width: 180px;
+        cursor: pointer;
+    }
+     .formSearch:hover .inputSearch{
+        display: block;
+    }
+    .logo {
+        width: 130px;
+        height: 20px;
+    }
+    .rightTabs {
+        height: 35px;
+    }
+}
+@media (min-width: 768px) {
+    .inputSearch {
+        padding: 0 40px 0 15px;
+        top: 0;
+    }
+    .buttonSearch {
+        height: 40px;
+        width: 40px;
+    }
+    .formSearch:hover{
+        width: 280px;
+    }
+    .logo{
+        width:165px;
+        height:25px;
+    }
+    .rightTabs {
+        height: 40px;
+    }
+}
+@media (min-width: 992px) {
+    .inputSearch {
+        padding: 0 42px 0 15px;
+    }
+    .buttonSearch {
+        height: 42px;
+        width: 42px;
+    }
+    .formSearch:hover {
+        width: 400px;
+    }
+    .logo {
+        width: 215px;
+        height: 33px;
+    }
+    .rightTabs {
+        height: 42px;
+    }
+}
+@media (min-width: 1200px) {
+    .formSearch:hover {
+        width: 500px;
+    }
+}
+/*-----------------------------*/
+.filters{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+.filters div{
+    margin:5px;
+}
+/*-----------------------------*/
+.navColor {
+    background-color: #fff047;
+}
+.active {
+    background-color: #fff047 !important;
+    color: black !important;
+}
+button {
+    background-color: #fff047 !important;
+    color: black !important;
+    outline-color: #fff047 !important;
+}
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: 60px;
+}
+* {
+    box-sizing: border-box;
+}
+/*------------------------------*/

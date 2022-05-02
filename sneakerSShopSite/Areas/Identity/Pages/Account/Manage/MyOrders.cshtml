@@ -1,0 +1,48 @@
+﻿@page
+@model sneakerSShopSite.Areas.Identity.Pages.Account.Manage.MyOrdersModel
+@{
+    ViewData["Title"] = "My Orders";
+    ViewData["ActivePage"] = ManageNavPages.MyOrders;
+}
+<h1>My orders</h1>
+<div class="row">
+    <div class="col-md-10">
+           @if(Model.requests!=null)
+           {
+                foreach(var req in Model.requests)
+                {
+                 <hr/>
+                    <p> Adress: @req.Adress</p>
+                    <table class="table align-middle">
+                      <thead>
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Size</th>
+                          <th scope="col">Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            @foreach (var reqGood in req.RequestGoods)
+                            {
+                            <tr>
+                                  <td>@reqGood.IdGoodNavigation.IdNomNavigation.IdBrandNavigation.BrandName 
+                                      @reqGood.IdGoodNavigation.IdNomNavigation.Model</td>
+                                  <td class="text-center">@reqGood.IdGoodNavigation.Size</td>
+                                  <td class="text-center">@reqGood.Number</td>
+                             </tr> 
+                            }
+                      </tbody>
+                      </table>
+                      <p>Price: $@req.FullPrice</p>
+                 }
+           }
+           else
+           {
+                <h3>You haven't any requests</h3>
+           }
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

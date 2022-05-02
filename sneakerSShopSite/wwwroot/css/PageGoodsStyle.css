@@ -1,0 +1,119 @@
+﻿.product-wrapper {
+    display: block;
+    width: 100%;
+    float: left;
+    transition: width .2s;
+    padding-right:10px;
+}
+.product {
+    display: block;
+    position: relative;
+    margin: 10px;
+    text-decoration: none;
+    height:300px;
+}
+.product-photo img {
+    width:100%;
+    height:100%;
+	transition: transform .4s ease-out;
+}
+.product-name {
+    margin-top:5px;
+    font-family: sans-serif;
+    color: black !important;
+    font-size: 10px;
+    line-height:1.2;
+    height:3em;
+}
+.priceAndLike{
+    position:relative;
+}
+.product-price {
+    font-family: sans-serif;
+    color: black !important;
+    font-size: 12px;
+    font-weight: 700;
+    position:absolute;
+    left:0;
+    bottom:10px;
+}
+.likeBtn {
+    background-color: transparent !important;
+    font-size:20px;
+    border: 0;
+    position: absolute;
+    right: 10px;
+    bottom:10px;
+}
+@media (min-width: 250px) {
+    .product-name {
+       font-size: 12px;
+    }
+    .product-price {
+        font-size: 14px;
+    }
+    .product{
+        height:350px;
+    }
+}
+@media (min-width: 300px) {
+    .product{
+        height:400px;
+    }
+}
+@media (min-width: 350px) {
+    .product {
+        height: 460px;
+    }
+}
+@media (min-width: 400px) {
+    .product {
+        height: 530px;
+    }
+}
+@media (min-width: 450px) {
+    .product-wrapper {
+        width: 50%;
+    }
+    .product-price {
+        font-size: 14px;
+    }
+    .product-name {
+        font-size: 12px;
+    }
+    .product{
+        height:350px;
+    }
+}
+@media (min-width: 768px) {
+    .product-wrapper {
+        width: 33.333%;
+    }
+    .product-price{
+        font-size:16px;
+    }
+    .product-name{
+        font-size:14px;
+    }
+}
+@media (min-width: 1000px) {
+    .product-wrapper {
+        width: 25%;
+    }
+}
+@media (min-width: 1200px) {
+    .product{
+        height:400px;
+    }
+    .product-name {
+       font-size: 18px;
+    }
+    .product-price {
+        font-size: 20px;
+    }
+}
+@media (min-width: 1500px) {
+    .product{
+        height:450px;
+    }
+}

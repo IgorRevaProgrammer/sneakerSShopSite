@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - sneakerSShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/sneakerSShopSite.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="modal fade" id="modalSearch" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+           <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="Search" asp-controller="Home" method="post"> 
+                        <div class="form-group">
+                             <input class="modalInputSearch" name="searchStr" type="text" placeholder="Search...">
+                             <button class="btn" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                             </button>
+                        </div>
+                    </form>
+                </div>
+           </div>
+        </div>
+    </div>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light navColor border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                     <img class="logo" src="~/resources/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex align-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item dropdown dropdownlink">
+                            <a class="nav-link" href="#" data-bs-toggle="dropdown">Women</a>
+                             @await Html.PartialAsync("Categories",false)
+                        </li>
+                        <li class="nav-item dropdown dropdownlink">
+                            <a class="nav-link" href="#" data-bs-toggle="dropdown">Men</a>
+		                    @await Html.PartialAsync("Categories",true)
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - sneakerSShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/038dbbce6d.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

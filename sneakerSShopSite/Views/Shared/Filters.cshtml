@@ -1,0 +1,88 @@
+﻿@using sneakerSShopSite.Models.ViewModels
+@model FiltersVM
+@if (Model != null)
+{   
+<form asp-action="Filter" asp-controller="Pages">
+    <div class="filters">
+        <div class="">
+            <select class="form-select" name="sort">
+                <option value="0">Default sort</option>
+                @foreach(var item in Model.sorts)
+                {
+                    @if(Model.selectedSortId==item.Id)
+                    {
+                         <option value="@item.Id" selected>@item.sortName</option>    
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.sortName</option>        
+                    }
+                }
+            </select>
+        </div>
+        <div class="">
+            <select class="form-select" name="brand">
+                <option value="0">Select brand</option>
+                @foreach(var item in Model.brands)
+                {
+                    @if(Model.selectedBrandId==item.Id)
+                    {
+                         <option value="@item.Id" selected>@item.BrandName</option>    
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.BrandName</option>        
+                    }
+                }
+            </select>
+        </div>
+        <div class="">
+            <select class="form-select" name="category">
+                <option value="0">Select category</option>
+                @foreach(var item in Model.categories)
+                {
+                    @if(Model.selectedCategoryId==item.Id)
+                    {
+                         <option value="@item.Id" selected>@item.CategoryName</option>    
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.CategoryName</option>        
+                    }
+                }
+            </select>
+        </div>
+        <div class="">
+            <div class="form-check form-check-inline">
+                @if(Model.selectedGender==1)
+                {
+                     <input value="1" class="form-check-input" type="radio" name="sex" id="sexRadio1" checked>
+                }
+                else
+                {
+                    <input value="1" class="form-check-input" type="radio" name="sex" id="sexRadio1">
+                }
+                <label class="form-check-label" for="sexRadio1">
+                  Female
+                </label>
+            </div>
+            <div class="form-check form-check-inline">
+                @if(Model.selectedGender==2)
+                {
+                        <input value="2" class="form-check-input" type="radio" name="sex" id="sexRadio2" checked>
+                }
+                else
+                {
+                        <input value="2" class="form-check-input" type="radio" name="sex" id="sexRadio2">
+                }
+                <label class="form-check-label" for="sexRadio2">
+                   Male
+                </label>
+            </div>
+        </div>
+        <div class="">
+            <input class="btn" type="submit" value="Filter"/>
+        </div>
+     </div>
+</form>
+}
